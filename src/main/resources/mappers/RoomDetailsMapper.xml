@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yjxxt.hotel.mapper.RoomDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.yjxxt.hotel.bean.RoomDetails" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="room_id" property="roomId" jdbcType="INTEGER" />
+    <result column="room_area" property="roomArea" jdbcType="INTEGER" />
+    <result column="room_intro" property="roomIntro" jdbcType="VARCHAR" />
+    <result column="room_price" property="roomPrice" jdbcType="INTEGER" />
+    <result column="room_type" property="roomType" jdbcType="VARCHAR" />
+    <result column="is_used" property="isUsed" jdbcType="INTEGER" />
+    <result column="room_img" property="roomImg" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, room_id, room_area, room_intro, room_price, room_type, is_used, room_img, is_valid, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_room_details
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_room_details
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yjxxt.hotel.bean.RoomDetails" >
+    insert into t_room_details (id, room_id, room_area, 
+      room_intro, room_price, room_type, 
+      is_used, room_img, is_valid, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{roomArea,jdbcType=INTEGER}, 
+      #{roomIntro,jdbcType=VARCHAR}, #{roomPrice,jdbcType=INTEGER}, #{roomType,jdbcType=VARCHAR}, 
+      #{isUsed,jdbcType=INTEGER}, #{roomImg,jdbcType=VARCHAR}, #{isValid,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yjxxt.hotel.bean.RoomDetails" >
+    insert into t_room_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roomId != null" >
+        room_id,
+      </if>
+      <if test="roomArea != null" >
+        room_area,
+      </if>
+      <if test="roomIntro != null" >
+        room_intro,
+      </if>
+      <if test="roomPrice != null" >
+        room_price,
+      </if>
+      <if test="roomType != null" >
+        room_type,
+      </if>
+      <if test="isUsed != null" >
+        is_used,
+      </if>
+      <if test="roomImg != null" >
+        room_img,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null" >
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="roomArea != null" >
+        #{roomArea,jdbcType=INTEGER},
+      </if>
+      <if test="roomIntro != null" >
+        #{roomIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="roomPrice != null" >
+        #{roomPrice,jdbcType=INTEGER},
+      </if>
+      <if test="roomType != null" >
+        #{roomType,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsed != null" >
+        #{isUsed,jdbcType=INTEGER},
+      </if>
+      <if test="roomImg != null" >
+        #{roomImg,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yjxxt.hotel.bean.RoomDetails" >
+    update t_room_details
+    <set >
+      <if test="roomId != null" >
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="roomArea != null" >
+        room_area = #{roomArea,jdbcType=INTEGER},
+      </if>
+      <if test="roomIntro != null" >
+        room_intro = #{roomIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="roomPrice != null" >
+        room_price = #{roomPrice,jdbcType=INTEGER},
+      </if>
+      <if test="roomType != null" >
+        room_type = #{roomType,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsed != null" >
+        is_used = #{isUsed,jdbcType=INTEGER},
+      </if>
+      <if test="roomImg != null" >
+        room_img = #{roomImg,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yjxxt.hotel.bean.RoomDetails" >
+    update t_room_details
+    set room_id = #{roomId,jdbcType=INTEGER},
+      room_area = #{roomArea,jdbcType=INTEGER},
+      room_intro = #{roomIntro,jdbcType=VARCHAR},
+      room_price = #{roomPrice,jdbcType=INTEGER},
+      room_type = #{roomType,jdbcType=VARCHAR},
+      is_used = #{isUsed,jdbcType=INTEGER},
+      room_img = #{roomImg,jdbcType=VARCHAR},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--根据表中的字段来 确认返回的项目-->
+  <select id="selectByParams" parameterType="roomDetailsQuery" resultType="roomDetails">
+    select * from t_room_details
+    <where>
+      is_valid = 1
+      <if test="roomArea != null and roomArea != ''">
+        and room_area=#{roomArea}
+      </if>
+      <if test="roomIntro != null and roomIntro != ''">
+        and room_intro=#{roomIntro}
+      </if>
+      <if test="roomType != null and roomType != ''">
+        and room_type=#{roomType}
+      </if>
+    </where>
+  </select>
+    <select id="selectByRoomId" resultType="com.yjxxt.hotel.bean.RoomDetails">
+        select * from t_room_details where room_id=#{roomId}
+    </select>
+  <!--批量删除 update t_user set is_vilid=0 where id in (1,2,3);-->
+  <update id="deleteBatch">
+    update t_room_details
+    set is_valid=0
+    <where>
+      id in
+      <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+      </foreach>
+    </where>
+  </update>
+
+</mapper>
